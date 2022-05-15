@@ -31,7 +31,7 @@ def fetch_by_page_no(page_no, data, url):
         })
 
 
-def fetch_data():
+def fetch_data_():
 
     # Opening the global parameters
     with open("./modules/param.yaml", "r") as stream:
