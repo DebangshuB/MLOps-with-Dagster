@@ -33,15 +33,10 @@ def fetch_by_page_no(page_no, data, url):
 
 def fetch_data_():
 
-    # Opening the global parameters
-    with open("./modules/param.yaml", "r") as stream:
-        try:
-            param = yaml.safe_load(stream)
-        except yaml.YAMLError as exc:
-            print(exc)
+    url = "https://www.makaan.com/kolkata-residential-property/"\
+          "buy-property-in-kolkata-city?page={}"
 
-    url = param["get_data"]["URL"]
-    num_pages = param["get_data"]["NUM_PAGES"]
+    num_pages = 5
 
     page_nos = [i for i in range(num_pages)]
     data = []

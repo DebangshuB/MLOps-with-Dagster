@@ -7,6 +7,7 @@ from dagster import (
 
 from modules.get_data import fetch_data_
 from modules.data_validation import validate_data_
+from modules.train_test_split import train_test_split_
 
 
 @op
@@ -56,3 +57,13 @@ def data_validation(context, df):
         raise Exception("Data couldn't be saved.")
 
     return df_clean
+
+
+@op
+def train_test_split(df):
+    result = train_test_split_(df)
+
+    return {
+        "train": result["train_split"],
+        "test": result["test_split"]
+    }

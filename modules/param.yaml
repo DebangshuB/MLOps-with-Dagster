@@ -1,3 +1,0 @@
-get_data:
-    URL: "https://www.makaan.com/kolkata-residential-property/buy-property-in-kolkata-city?page={}"
-    NUM_PAGES: 2
