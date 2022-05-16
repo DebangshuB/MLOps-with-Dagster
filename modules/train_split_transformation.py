@@ -2,7 +2,7 @@ from dask_ml.preprocessing import LabelEncoder, RobustScaler
 import dask.array as da
 
 
-def train_split_transformation(df):
+def train_split_transformation_(df):
     # Price
     # Converting everything to lacs
     df.loc[df["Unit"] == "Cr", "Price"] = df["Price"] * 100
@@ -25,5 +25,8 @@ def train_split_transformation(df):
 
     return {
         "targets": targets,
-        "features": scaled_features
+        "features": scaled_features,
+        "Status LE": status_le,
+        "Age LE": age_le,
+        "Feature Scaler": feature_scaler
     }

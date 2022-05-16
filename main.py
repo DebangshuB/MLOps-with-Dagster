@@ -8,6 +8,7 @@ from dagster import (
 from modules.get_data import fetch_data_
 from modules.data_validation import validate_data_
 from modules.train_test_split import train_test_split_
+from modules.train_split_transformation import train_split_transformation_
 
 
 @op
@@ -63,7 +64,11 @@ def data_validation(context, df):
 def train_test_split(df):
     result = train_test_split_(df)
 
-    return {
-        "train": result["train_split"],
-        "test": result["test_split"]
-    }
+    return result
+
+
+@op
+def train_split_transformation(df):
+    result = train_split_transformation_(df)
+
+    return result
