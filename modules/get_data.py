@@ -1,5 +1,4 @@
 import re
-import yaml
 import requests
 from pandas import DataFrame
 from bs4 import BeautifulSoup
@@ -36,7 +35,7 @@ def fetch_data_():
     url = "https://www.makaan.com/kolkata-residential-property/"\
           "buy-property-in-kolkata-city?page={}"
 
-    num_pages = 5
+    num_pages = 1
 
     page_nos = [i for i in range(num_pages)]
     data = []
@@ -48,6 +47,10 @@ def fetch_data_():
             [data] * num_pages,
             [url] * num_pages
         )
+
+    # For testing
+    # for no in page_nos:
+    #     fetch_by_page_no(no, data, url)
 
     cols = ["BHK", "Price", "Unit", "SQFT", "Status", "Age"]
 

@@ -1,4 +1,5 @@
 from decimal import Decimal, InvalidOperation
+from datetime import datetime
 
 import numpy as np
 from pandas_schema import Column, Schema
@@ -78,6 +79,12 @@ def validate_data_(df):
     errors = schema.validate(df)
     errors_index_rows = [e.row for e in errors]
     df_clean = df.drop(index=errors_index_rows)
+
+    # Save the clean data
+    now = datetime.now()
+    timestamp = now.timestamp()
+
+    df_clean.to_csv(f"./data/csv/{str(timestamp)}.csv")
 
     return {
         "df_clean": df_clean,

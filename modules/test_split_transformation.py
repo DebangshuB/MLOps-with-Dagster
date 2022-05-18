@@ -1,9 +1,8 @@
-import pandas as pd
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 import pandas as pd
 
 
-def train_split_transformation_(df):
+def test_split_transformation_(df, status_le, age_le, feature_scaler):
     # Price
     # Converting everything to lacs
     df["Price"] = pd.to_numeric((df["Price"]))
@@ -11,24 +10,18 @@ def train_split_transformation_(df):
     df.drop("Unit", axis=1, inplace=True)
 
     # Status
-    status_le = LabelEncoder()
-    df["Status"] = status_le.fit_transform(df["Status"])
+    df["Status"] = status_le.transform(df["Status"])
 
     # Age
-    age_le = LabelEncoder()
-    df["Age"] = age_le.fit_transform(df["Age"])
+    df["Age"] = age_le.transform(df["Age"])
 
     targets = df["Price"].to_numpy()
     features = df.drop("Price", axis=1).to_numpy()
 
     # Scaling the features
-    feature_scaler = StandardScaler()
-    scaled_features = feature_scaler.fit_transform(features)
+    scaled_features = feature_scaler.transform(features)
 
     return {
         "targets": targets,
-        "features": scaled_features,
-        "Status LE": status_le,
-        "Age LE": age_le,
-        "Feature Scaler": feature_scaler
+        "features": scaled_features
     }
