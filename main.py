@@ -201,7 +201,7 @@ def model_training(context, targets, features):
     model = result["model"]
 
     try:
-        joblib.dump(model, "./data/preprocessors/" + str(timestamp) + ".pkl")
+        joblib.dump(model, "./data/models/" + str(timestamp) + ".pkl")
         logger.info("elasticNetModel Saved!")
 
         context.log_event(

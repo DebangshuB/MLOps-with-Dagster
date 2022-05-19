@@ -5,7 +5,8 @@ def setup_folders_():
     folders = [
         "./data",
         "./data/models",
-        "./data/csv"
+        "./data/csv",
+        "./data/preprocessors"
     ]
 
     for folder in folders:
