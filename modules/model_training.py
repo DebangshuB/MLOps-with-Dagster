@@ -19,6 +19,5 @@ def model_training_(targets, features):
 
     return {
         "model": search.best_estimator_,
-        "score": search.best_score_,
         "parameters": search.best_params_
     }

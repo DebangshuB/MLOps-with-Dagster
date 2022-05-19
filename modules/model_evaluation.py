@@ -1,6 +1,5 @@
 from datetime import datetime
 import pandas as pd
-import joblib
 
 
 def model_evaluation_(model, features, targets, params):
@@ -19,8 +18,6 @@ def model_evaluation_(model, features, targets, params):
     # Scoring the current model
     targets = targets.reshape(-1, 1)
     score_ = model.score(features, targets)
-
-    joblib.dump(model, "./data/models/" + str(timestamp) + ".pkl")
 
     addition = {
         "timestamp": [timestamp],
